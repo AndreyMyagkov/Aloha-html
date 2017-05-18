@@ -1,0 +1,44 @@
+/*SORT BAR*/
+
+.b-sort-bar {
+	text-align: right;
+	margin-bottom: 6px;
+	width:500px;
+	margin:0 auto 6px auto;
+
+}
+.sort-bar__title {
+	display: inline-block;
+	margin-right: 20px;
+	vertical-align: middle;
+}
+.sort-bar__btn {
+	-webkit-appearance :none;
+	border:none;
+	background: transparent;
+	margin-left: 10px;
+	cursor:pointer;
+	white-space: nowrap;
+}
+.sort-bar__btn:focus{
+	outline:none;
+}
+.sort-bar__btn_duration {}
+.sort-bar__btn-title {
+	border-bottom: dashed 1px #333;
+	display: inline-block;
+	vertical-align: middle;
+}
+.sort-bar__btn-arrow {
+	visibility: hidden;
+	display: inline-block;
+	vertical-align: middle;
+}
+.sort-bar__btn.active .sort-bar__btn-arrow{
+	visibility: visible;
+}
+
+.sort-bar__btn.desc .sort-bar__btn-arrow{
+	-webkit-transform: rotate(180deg);
+	        transform: rotate(180deg);
+}

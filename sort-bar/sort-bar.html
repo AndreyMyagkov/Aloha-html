@@ -1,0 +1,62 @@
+<div class="b-sort-bar">
+	<span class="sort-bar__title">Сортировать по:</span>
+	<button class="sort-bar__btn sort-bar__btn_duration js-sort-bar__btn_duration">
+		<span class="sort-bar__btn-title">Продолжительности</span>
+		<i class="sort-bar__btn-arrow">↑</i>
+	</button>
+	
+	<button class="sort-bar__btn sort-bar__btn_price js-sort-bar__btn_price active desc">
+		<span class="sort-bar__btn-title">Цене</span>
+		<i class="sort-bar__btn-arrow">↑</i>
+	</button>
+</div>
+
+
+<!-- example -->
+<table style="width:500px; margin: 0 auto; border:solid 1px #444;">
+	<thead>
+	<tr>
+		<th style="text-align: left;">Item</th>
+		<th style="text-align: left;">Duration</th>
+		<th style="text-align: left;">Price</th>
+	</tr>
+	</thead>
+	<tbody class="item__list">
+	<tr data-duration="5" data-price="100" class="item">
+		<td>Item 1</td>
+		<td>5 days</td>
+		<td>$100</td>
+	</tr>
+	<tr data-duration="3" data-price="200" class="item">
+		<td>Item 2</td>
+		<td>3 days</td>
+		<td>$200</td>
+	</tr>
+	<tr data-duration="4" data-price="50" class="item">
+		<td>Item 3</td>
+		<td>4 days</td>
+		<td>$50</td>
+	</tr>
+	<tr data-duration="10" data-price="75" class="item">
+		<td>Item 4</td>
+		<td>10 days</td>
+		<td>$75</td>
+	</tr>
+	</tbody>
+</table>
+
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	td, th {
+		border:solid 1px #444;
+
+	}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<!-- /example -->
