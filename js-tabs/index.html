@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mobile Tabs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+
+
+
+<!-- tabs -->
+<div class="b-tabs">
+
+    <div class="tabs__nav">
+        <div class="tabs__link active">Программа</div>
+        <div class="tabs__link">Цены</div>
+        <div class="tabs__link">Заказать</div>
+    </div>
+
+    <div class="tabs__contents">
+
+
+        <div class="tabs__content active">
+            1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo dolorem sapiente autem, vel asperiores quam porro numquam sequi iusto. Modi sequi et autem, dicta ut, voluptas expedita illo hic libero quam soluta. Ipsum eos ipsam itaque! In quisquam error, eos esse et id nihil iste ut sunt doloremque accusamus unde assumenda voluptatum. Quod maxime accusantium molestias. Accusantium suscipit debitis tenetur ipsum non voluptates culpa ipsam quisquam quis aspernatur? Vitae iusto reprehenderit architecto vel debitis et similique voluptatem doloremque id, officia tenetur. Eveniet ex perspiciatis neque velit. Voluptatem omnis aliquam minima, harum nisi ullam impedit totam facere, ipsum ducimus rerum modi?
+        </div>
+        <div class="tabs__content">
+           2  Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, voluptatum aspernatur suscipit ullam quidem repellat quia dolorum, facere laboriosam molestiae ab dicta maiores quisquam illum ea sint quo perferendis fugiat!
+        </div>
+        <div class="tabs__content">
+            3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. In id eveniet nam omnis odit blanditiis, eum velit fuga eius porro iusto alias facilis dolor non numquam minima illum voluptas maxime!
+        </div>
+
+    </div>
+</div>
+<!-- /tabs -->
+
+
+<style>
+/*TABS*/
+
+.b-tabs {
+    margin: 20px 0;
+    --tabBg:#68c6dc;
+    --tabActiveBg:#2a9bb5;
+    --tabColor:#fff;
+}
+
+.tabs__nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.tabs__link {
+    background-color: var(--tabBg);
+    padding: 10px 20px;
+    color: var(--tabColor);
+    cursor: pointer;
+    border-right: solid 1px #fff;
+}
+.tabs__header {
+    background-color: var(--tabBg);
+    padding: 10px 20px;
+    color: var(--tabColor);
+    cursor: pointer;
+    border-bottom: solid 1px var(--tabActiveBg);
+    position: relative;
+    display: none;
+}
+.tabs__header:after {
+    content: '';
+    display: block;
+    width: 0.75em;
+    height: 0.75em;
+    border:solid 1px var(--tabColor);
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 7px;
+    right: 15px;
+}
+.tabs__header.active{
+    background-color: var(--tabActiveBg);
+}
+
+.tabs__link.active {
+    background-color: var(--tabActiveBg);
+}
+
+.tabs__contents:not(:empty) {
+    border: solid 1px var(--tabActiveBg);
+    margin-top: -1px;
+}
+
+.tabs__content {
+    padding: 25px 20px;
+    display: none;
+}
+
+.tabs__content.active {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .tabs__link {
+        flex: 1 1 auto;
+        border-bottom: solid 1px var(--tabActiveBg);
+        border-right: none;
+    }
+    .tabs__nav {
+        display: none;
+    }
+    .tabs__header {
+        display: block;
+    }
+    .tabs__header {
+        padding: 10px 45px;
+    }
+}
+
+/* /TABS*/
+</style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script>
+
+/* Responsive Tabs plugin
+/* @Sample: $('.b-tabs').chTabs();
+/* @Sample: $('.b-tabs').chTabs({'hash':false}); - dont use has navigation
+/*
+/********/
+
+;(function ($) {
+
+    $.fn.chTabs = function (options) {
+
+        var settings = $.extend({
+            'hash': true,
+        }, options);
+
+        this.each(function () {
+            var $this = $(this),
+                hash= document.location.hash,
+                index=0;
+
+            $('.tabs__content', $this).each(function (i,el) {
+                $(el).before('<div class="tabs__header">' + $('.tabs__link', $this).eq(i).text() + '</div>');
+            });
+
+            if (settings.hash && hash.indexOf('tab-')>=0) {
+                index=hash.match(/tab-(\d*)/);
+                index=(index[1]&& index[1]<= $('.tabs__content', $this).length)?index[1]:0;
+            }
+            openTab($this, index);
+        });
+
+        function openTab(el, index){
+            $('.tabs__link', el).removeClass('active').eq(index).addClass('active');
+            $('.tabs__header', el).removeClass('active').eq(index).addClass('active');
+            $('.tabs__content', el).removeClass('active').eq(index).addClass('active');
+            if (settings.hash && index) {document.location.hash='tab-'+index} else {
+                if (document.location.hash.indexOf('tab-')) {
+                    document.location.hash='';
+                }
+            }
+        }
+
+        $('.tabs__link, .tabs__header').on('click', function () {
+            var el = $(this).parents('.b-tabs');
+            var index=$(this).index();
+            if($(this).hasClass('tabs__header')){ index= index/2}
+            openTab(el, index)
+        });
+
+        return this;
+
+    };
+})(jQuery);
+
+
+$('.b-tabs').chTabs({'hash':true});
+
+
+</script>
+
+
+
+</body>
+</html>

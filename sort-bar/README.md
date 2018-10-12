@@ -1,4 +1,4 @@
-# Sort elemts 
+# SortItems
 
 @param listSelector {string} - селектор родителя
 
