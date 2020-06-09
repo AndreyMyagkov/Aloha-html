@@ -1,0 +1,30 @@
+
+<h1>Вариант с чекбоксом</h1>
+<label class="agreement agreement_control">
+    <span class="agreement__text">Подтверждаю согласие на <a href="/politika.html" target="_blank" class="agreement__link">обработку персональных данных</a></span>
+    <input type="checkbox" value="1" name="agr" class="agreement__checkbox" checked="checked" required="required">
+</label>
+    
+<h1>Вариант для кнопки</h1>
+<div class="agreement">
+    <span class="agreement__text">
+        Нажимая на кнопку «Отправить» вы соглашаетесь с
+        <a href="/politika.html" target="_blank" class="agreement__link">политикой обработки персональных данных</a>
+    </span>
+</div>
+
+<style>
+/* agreement */
+.agreement_control {
+    position: relative;
+    padding-left: 20px;
+}
+
+.agreement__checkbox {
+    position: absolute;
+    margin:0;
+    top: 2px;
+    left: 0;
+}
+/* agreement */
+</style>
