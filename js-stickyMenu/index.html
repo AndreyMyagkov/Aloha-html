@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sticky menu</title>
+</head>
+<body>
+    <header style="height:100px;background-color: #2196f3;"></header>
+
+    <nav style="background-color:gray; margin-bottom: 100px; padding:20px; border:solid 5px red;opacity:0.5">
+        МЕНЮ
+    </nav>
+
+    <main style="height:3000px; background-color: bisque;" class="content">
+        content
+    </main>
+
+
+<style>
+ .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+/* stickyNav
+* @param navbar {html selector}
+* @param minWidth {integer} min width for sticky
+*/
+stickyNav = function (navbar, minWidth) {
+    navbar = document.querySelector(navbar);
+    minWidth = minWidth ? minWidth : 768;
+    const sticky = navbar.offsetTop;
+
+    const stickyPlaceholder = document.createElement('div');
+    stickyPlaceholder.classList.add("sticky-placeholder");
+    navbar.parentNode.insertBefore(stickyPlaceholder, navbar);
+
+
+
+    function outerHeight(element) {
+        let height = element.clientHeight;
+        const computedStyle = window.getComputedStyle(element);
+        height += parseInt(computedStyle.marginTop, 10);
+        height += parseInt(computedStyle.marginBottom, 10);
+        height += parseInt(computedStyle.borderTopWidth, 10);
+        height += parseInt(computedStyle.borderBottomWidth, 10);
+        return height;
+    }
+
+    function setSticky() {
+        stickyPlaceholder.style.height = outerHeight(navbar)+'px';
+        navbar.classList.add("sticky");
+    }
+
+    function removeSticky() {
+        navbar.classList.remove("sticky");
+        stickyPlaceholder.style.height = 'auto';
+    }
+    
+
+    function onScroll() {
+        if (sticky == 0) { sticky = navbar.offsetTop }
+        windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        if ((window.pageYOffset >= sticky) && (windowWidth >= minWidth)) {
+            setSticky();
+        } else {
+            removeSticky();
+        }
+    }
+
+    document.addEventListener('scroll', onScroll);
+}
+/* /stickyNav */
+
+stickyNav('nav', 768);
+</script>
+
+
+</body>
+
+</html>
